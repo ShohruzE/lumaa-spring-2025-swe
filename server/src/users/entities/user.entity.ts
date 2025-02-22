@@ -4,7 +4,7 @@ import { Task } from '../../tasks/entities/task.entity';
 @Entity()
 export class User {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
+  id: string;
 
   @Column({ unique: true })
   username: string;
@@ -12,6 +12,6 @@ export class User {
   @Column() // hashed password
   password: string;
 
-  //   @OneToMany(() => Task, (task) => task.userId)
-  //   tasks: Task[];
+  @OneToMany(() => Task, (task) => task.user)
+  tasks: Task[];
 }
